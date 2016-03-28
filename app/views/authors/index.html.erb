@@ -1,0 +1,21 @@
+<h1>Authors</h1> 
+
+
+   
+<% @authors.each do |author| %>       
+  <h3><%= link_to(author.last_name, author_path(author)) %>
+  </h3>  
+
+  <p><%= link_to 'Edit Author', edit_author_path(author)%>
+          </p>         
+  <p><%= link_to 'Delete', author_path(author), method: :delete, data: { confirm: 'Are you sure you want to delete this author?' } %>
+          </p>  
+
+  <br> 
+
+<% end %>   
+
+<%= link_to "Create New Author", new_author_path %>
+<br>
+<%= link_to "Back to all Articles", articles_path %>
+

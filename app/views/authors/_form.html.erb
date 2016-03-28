@@ -1,0 +1,26 @@
+<% if @author.errors.any? %>     
+  <div id="error_explanation">       
+    <h2><%= pluralize(@author.errors.count, "missing field") %> need to be completed:</h2>
+    <ul>       
+    <% @author.errors.full_messages.each do |message| %>         
+      <li><%= message %></li>       
+    <% end %>       
+    </ul>     
+  </div>   
+<% end %>
+
+<%= form_for @author do |f| %>   
+
+  <p><%= f.label :first_name %>
+    <br>     
+    <%= f.text_field :first_name %>   
+  </p>
+
+  <p><%= f.label :last_name %>
+    <br>     
+    <%= f.text_field :last_name %>   
+  </p>
+
+  <%= f.submit %> 
+
+<% end %>

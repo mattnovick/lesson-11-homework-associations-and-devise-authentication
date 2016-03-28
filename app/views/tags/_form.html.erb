@@ -1,0 +1,21 @@
+<% if @tag.errors.any? %>     
+  <div id="error_explanation">       
+    <h2><%= pluralize(@tag.errors.count, "missing field") %> need to be completed:</h2>
+    <ul>       
+    <% @tag.errors.full_messages.each do |message| %>         
+      <li><%= message %></li>       
+    <% end %>       
+    </ul>     
+  </div>   
+<% end %>
+
+<%= form_for @tag do |f| %>   
+
+  <p><%= f.label :name %>
+    <br>     
+    <%= f.text_field :name %>   
+  </p>
+
+  <%= f.submit %> 
+
+<% end %>

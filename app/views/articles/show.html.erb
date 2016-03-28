@@ -1,0 +1,36 @@
+<%= link_to "Back to all Articles", articles_path %>
+
+<br>
+
+<h1>Article</h1>
+
+<h3>
+<%= @article.title %>
+</h3>
+
+<p>
+<%= @article.body %>
+</p>
+
+
+<p> 
+  by
+  <% @article.authors.each do |author| %>     
+    <%= author.first_name %> <%= author.last_name %>   
+  <% end %> 
+</p>  
+
+<p> 
+  <ul>
+    <% @article.tags.each do |tag| %>
+      <li></li>     
+      <%= tag.name %>
+      </li> 
+    <% end %>
+  </ul>
+</p>   
+
+
+
+
+<%= link_to "edit article", edit_article_path %>

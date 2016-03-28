@@ -1,0 +1,39 @@
+<% if @article.errors.any? %>     
+  <div id="error_explanation">       
+    <h2><%= pluralize(@article.errors.count, "missing field") %> need to be completed:</h2>
+    <ul>       
+    <% @article.errors.full_messages.each do |message| %>         
+      <li><%= message %></li>       
+    <% end %>       
+    </ul>     
+  </div>   
+<% end %>
+
+<%= form_for @article do |f| %>   
+
+  <p><%= f.label :title %>
+    <br>     
+    <%= f.text_field :title %>   
+  </p>
+
+  <p><%= f.label :body %>
+    <br>     
+    <%= f.text_field :body %>   
+  </p>
+
+  <p>     
+    <%= collection_check_boxes(:article, :author_ids, Author.all, :id, :last_name) %>   
+  </p>
+    <%= link_to "Create new author option", new_author_path %>
+
+  <p>     
+    <%= collection_check_boxes(:article, :tag_ids, Tag.all, :id, :name) %>   
+  </p>
+
+  <%= link_to "Create new tag option", new_tag_path %>
+
+  <br>
+
+  <%= f.submit %> 
+
+<% end %>
